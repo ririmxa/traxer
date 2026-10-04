@@ -95,13 +95,13 @@ p{
     color: #fff;
 }
 .card1{
-    background-image: url(images/marvelmovie1.png);
+    background-image: url(marvelmovie1.png);
 }
 .card2{
-    background-image: url(images/marvelshows.png);
+    background-image: url(marvelshows.png);
 }
 .card3{
-    background-image: url(images/xmenmovies.png);
+    background-image: url(xmenmovies.png);
 }
 .card:hover{
     transform: translateY(-10px);
