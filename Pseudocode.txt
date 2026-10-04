@@ -1,0 +1,130 @@
+# Sorting Algorithm (Release vs Chronological)
+
+
+#The release order as well as the chronological order are not calculated. They both have their own set of values. For release order, it's the
+#seperation of all the movies in their own phases (which was set by the Marvel company itself). For chronological order, I looked at all
+#the lists created by others, to create my own chronological order that is accepted by most fans. The algorithm follows this predefined order and
+#matches each ID to the corresponding movie in the input list (*For the shows and the X-Men movies there is no dividing into phases, so For
+#release order I simply go through the actual releases)
+
+FUNCTION sorting(list, sortmode)
+    IF sortmode = "release" THEN
+        RETURN ReleaseOrderSorting(list)
+    ELSE
+        RETURN ChronologicalOrderSorting(list)
+END FUNCTION
+
+
+FUNCTION ReleaseOrderSorting(list)
+    releaseorder = [id1, id2, id3, ..., idn]
+    sortedlist = []
+
+    FOR EACH movieID IN releaseorder
+        FOR EACH item IN list
+            IF item.id = moviedID THEN
+                APPEND item to sortedlist
+END FUNCTION
+
+FUNCTION ChronologicalOrderSorting(list)
+    chronologicalorder = [idA, idB, idC, ..., idN]
+    sortedlist = []
+
+    FOR EACH movieID in chronologicalorder
+        FOR EACH item IN list
+            IF item.id = movieID THEN
+                APPEND item TO sortedlist
+END FUNCTION
+
+#Percentage Algorithms
+
+FUNCTION calculateMoviesPercentage(watchedMovies, totalMovies)
+    percentage = (watchedMovies/totalMovies) * 100
+    RETURN ROUND(percentage)
+
+    IF totalMovies = 0
+        RETURN 0
+END FUNCTION
+
+FUNCTION calculateShowPercentage(watchedEpisode, totalEpisodes)
+    percentage = (watchedEpisode/totalEpisodes)
+    RETURN ROUND(percentage)
+
+    IF totalEpisodes = 0
+        RETURN 0
+END FUNCTION
+
+FUNCTION calculateOverallShowsPercentage(shows)
+    finished = 0
+    
+    FOR EACH show IN shows
+        IF watchedEpisode = totalEpisode THEN  
+            finished = finished + 1
+
+    IF total = 0
+        RETURN 0
+
+    percentage = (finished/total) * 100
+    RETURN ROUND(percentage)
+END FUNCTION
+
+FUNCTION calculatePhasePercentage(phaseMovies, watchedMovies)
+    watched = 0
+
+    FOR EACH movie IN phaseMovies
+        IF movie.id IN watchedMovies THEN
+        watched = watched + 1
+    
+    IF total = 0
+        ReTURN 0
+
+    percentage = (watched/total) * 100
+    RETURN ROUND(percentage)
+END FUNCTION
+
+#LocalStorage Algorithms
+
+FUNCTION saveProgress(watchedMovies, watchedEpisodes, rewatches)
+    data = {
+        movies: watchedMovies,
+        episodes: watchedEpisodes,
+        rewatches: rewatches
+    }
+
+    jsonString = CONVERT data to jsonString
+
+    STORE jsonString IN LocalStorage UNDER "progress"
+END FUNCTION
+
+FUNCTION loadProgress()
+    saved = READ "progress" FROM LocalStorage
+
+    IF saved IS NULL THEN
+        RETURN {
+            movies: EMPTY LIST,
+            episodes: EMPTY OBJECT
+            rewatches: EMPTY OBJECT
+        }
+    TRY
+        data = PARSE saved
+        RETURN data
+    CATCH error
+        RETURN {
+            movies: EMPTY LIST,
+            episodes: EMPTY OBJECT
+            rewatches: EMPTY OBJECT    
+        }
+END FUNCTION
+
+#Episode Expansion Algorithm
+
+FUNCTION loadShowPage(show)
+    currentSeason = 1
+    DISPLAY episodes FOR currentSeason
+END FUNCTION
+
+FUNCTION changeSeason(selectedSeason) /if applicable since some shows have only 1 season 
+    currentSeason = selectedSeason
+    DISpLAY episodes FOR currentSeason
+END FUNCTION
+
+    

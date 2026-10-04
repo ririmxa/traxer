@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marvel Movies - TRAXER</title>
+        <link rel="stylesheet" href="marvelmovies.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="navbar sticky-nav">
+                <a href="index.html">
+                <img src="images/placer.jpg" class="logo">
+            </a>
+                <nav>
+                    <ul>
+                        <li><a href="marvelmovies.html">MARVEL MOVIES</a></li>
+                        <li><a href="marvelshows.html">MARVEL SHOWS</a></li>
+                        <li><a href="xmen.html">X-MEN MOVIES</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <h1 class="movies-title">MARVEL MOVIES</h1>
+
+            <div class="sorting-options">
+                <button class="sort-button active" data-sort="release">Release Order</button>
+                <button class="sort-button" data-sort="chronological">Chronological Order</button>
+            </div>
+            
+            <section id="release-view" class="movies-view">
+
+                <div class="phase-block" data-phase="1">
+                    <h2 class="phase-title">Phase 1</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 1 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+                <div class="phase-block" data-phase="2">
+                    <h2 class="phase-title">Phase 2</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 2 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+                <div class="phase-block" data-phase="3">
+                    <h2 class="phase-title">Phase 3</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 3 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+                <div class="phase-block" data-phase="4">
+                    <h2 class="phase-title">Phase 4</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 4 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+                <div class="phase-block" data-phase="5">
+                    <h2 class="phase-title">Phase 5</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 5 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+                <div class="phase-block" data-phase="6">
+                    <h2 class="phase-title">Phase 6</h2>
+                    <div class="phase-row"></div>
+                    <div class="phase-progress">
+                        <span>Phase 6 - <strong class="phase-percent">0%</strong> watched</span>
+                    </div>
+                </div>
+
+        </section>
+        
+        <section id="chronological-view" class="movies-view hidden">
+            <div class="chronological-grid"></div>
+        </section>
+
+            <footer class = "overall-progress">
+                <span>Overall MCU Progress - <strong class="overall-percent">0%</strong> watched</span>
+            </footer>
+        </div>
+
+        <script src="./movies.js"></script>
+
+    </body>
+</html>

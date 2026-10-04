@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: #6B9AC4;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #6B9AC4;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo {
+    width: 50px;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 60px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    align-items: center;
+    margin-top: 40px;
+}
+.col{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+h1{
+    color: #fff;
+    font-size: 70px;
+    text-align: center;
+}
+p{
+  color: #fff;
+  font-size: 20px;  
+  line-height: 25px;
+  display: center;
+  text-align: center;
+
+}
+.card{
+    width: clamp(240px, 25vw, 420px);
+    height: clamp(320px, 35vw, 580px);
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 5px 10px;
+    background-position: center;
+    background-size: cover;
+    transition: 0.5s;
+    filter: grayscale(100%);
+    border: 2px solid #fff;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+.card1{
+    background-image: url(images/marvelmovie1.png);
+}
+.card2{
+    background-image: url(images/marvelshows.png);
+}
+.card3{
+    background-image: url(images/xmenmovies.png);
+}
+.card:hover{
+    transform: translateY(-10px);
+    filter: grayscale(0%);
+    h5{
+        text-shadow: 0 0 15px #000;
+        transition: 0.5s;
+    }
+}
+h5{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-style: normal;
+    
+}
+a{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-style: normal;
+}
+.card p{
+   text-shadow: 0 0 15px #000; 
+   font-size: 8px;
+}
+.cards-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(12px, 2vw, 32px);
+    justify-items: center;
+    margin-top: 20px;
+    flex: 1;
+    width: 100%;
+}
+
+@media (min-height: 800px) {
+    html, body {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+@media (max-height: 849px){
+    html, body {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 600px){
+    .cards-container{
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+    .cards-container > *:nth-child(3){
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+}
