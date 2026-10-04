@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Shows - TRAXER</title>
+    <link rel="stylesheet" href="marvelshows.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="navbar sticky-nav">
+            <a href="index.html">
+                <img src="placer.jpg" class="logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="marvelmovies.html">MARVEL MOVIES</a></li>
+                    <li><a href="marvelshows.html">MARVEL SHOWS</a></li>
+                    <li><a href="xmen.html">X-MEN MOVIES</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <h1 class="movies-title">MARVEL SHOWS</h1>
+
+        
+
+        <section class="shows-grid" id="shows-grid">
+        </section>
+
+        <div class="modal-overlay hidden">
+            <div class="modal">
+
+                <button class="modal-close">&times;</button>
+
+                <div class="modal-banner">
+                    <img src="" class="modal-banner-img" alt="Show Banner">
+                </div>
+
+                <div class="modal-header">
+                    <h2 class="modal-title">Show Title</h2>
+                    <p class="modal-overview">Full Overview...</p>
+                    <p class="modal-meta">
+                        <span class="modal-rating">Rating: 0.0</span>
+                    </p>
+
+                    <p class="modal-show-progress">
+                        Show watched: <span class="modal-show-percent">0%</span>
+                    </p>
+
+                    <div class="modal-show-rewatch">
+                        Rewatch Count:
+                        <button class="show-rewatch-minus">-</button>
+                        <span class="show-rewatch-count">0</span>
+                        <button class="show-rewatch-plus">+</button>
+                    </div>
+                </div>
+
+                <div class="modal-season-controls">
+                    <label for="season-select">Season:</label>
+                    <select id="season-select" class="season-select"></select>
+
+                    <span class="season-percent-label">
+                        Season watched: <span class="season-percent">0%</span>
+                    </span>
+                </div>
+
+                <div class="modal-episodes"></div>
+            </div>
+        </div>
+
+        <footer class="overall-progress">
+            <span>Overall Episodes Watched: <strong id="overall-percent">0%</strong></span>
+        </footer>
+
+        </div>
+
+    <script src="marvelshows.js"></script>
+
+
+</body>
+</html>
