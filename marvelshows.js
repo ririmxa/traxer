@@ -92,6 +92,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const show = await fetchShow(currentShowId);
 
+            showState[currentShowId] = showState[currentShowId] || {watchedEpisodes: {}, rewatch: 0};
+            for (const season of show.seasons) {
+                if (season.season_number > 0) {
+                    const seasonData = await fetchSeason(currentShowId, season.season_number);
+                    seasonData.episodes.forEach(ep => {
+                        if (!(ep.id in showState[currentShowId].watchedEpisodes)) {
+                            showState[currentShowId].watchedEpisodes[ep.id] = false;
+                        }
+                    });
+                }
+            }
+
+            saveState();
+
             modalBannerImg.src = show.backdrop_path ? `https://image.tmdb.org/t/p/w1280${show.backdrop_path}` : "https://via.placeholder.com/1280x720?text=No+Banner";
             modalTitle.textContent = show.name;
             modalOverview.textContent = show.overview || "No overview available.";
@@ -155,6 +169,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     function renderEpisodes(seasonData) {
+        showState[currentShowId] = showState[currentShowId] || {watchedEpisodes: {}, rewatch: 0};
+        seasonData.episodes.forEach(ep => {
+            if (!(ep.id in showState[currentShowId].watchedEpisodes)) {
+                showState[currentShowId].watchedEpisodes[ep.id] = false;
+            }
+        });
+        saveState();
+
         episodesContainer.innerHTML = "";
 
         seasonData.episodes.forEach(ep => {
