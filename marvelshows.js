@@ -49,9 +49,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     <div class="card-buttons">
                         <button class="info-button">More Info</button>
-                        <button class="rewatch-minus">-</button>
-                        <span class="rewatch-count">${getRewatch(show.id)}</span>
-                        <button class="rewatch-plus">+</button>
                     </div>
                 </div>
             </div>
@@ -65,6 +62,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         for (const show of show_list) {
             const apiShow = await fetchShow(show);
+
+            showState[apiShow.id] = showState[apiShow.id] || {watchedEpisodes: {}, rewatch: 0};
+
+            for (const season of apiShow.seasons) {
+                if (season.season_number > 0) {
+                    const seasonData = await fetchSeason(apiShow.id, season.season_number);
+                    seasonData.episodes.forEach(ep => {
+                        if (!(ep.id in showState[apiShow.id].watchedEpisodes)) {
+                            showState[apiShow.id].watchedEpisodes[ep.id] = false;
+                        }
+                    });
+                }
+            }
+
+            saveState();
+            
             const card = createShowCard(apiShow);
             grid.appendChild(card);
         }
@@ -148,16 +161,47 @@ document.addEventListener("DOMContentLoaded", async () => {
             updateOverallPercent();
         }
 
-        if (e.target.classList.contains("rewatch-plus")) {
+        if (e.target.classList.contains("show-rewatch-plus")) {
             incrementRewatch(currentShowId);
             modalRewatchCount.textContent = getRewatch(currentShowId);
             updateCardRewatch(currentShowId);
         }
 
-        if (e.target.classList.contains("rewatch-minus")) {
+        if (e.target.classList.contains("show-rewatch-minus")) {
             decrementRewatch(currentShowId);
             modalRewatchCount.textContent = getRewatch(currentShowId);
             updateCardRewatch(currentShowId);
+        }
+
+        if (e.target.classList.contains("mark-all-watched")) {
+            const eps = showState[currentShowId].watchedEpisodes;
+            const allWatched = Object.values(eps).every(v => v ===true);
+
+            if(allWatched) {
+                for (const epId in eps) {
+                    eps[epId] = false;
+                }
+                e.target.textContent = "Mark All Watched";
+            } else {
+                for (const epId in eps) {
+                    eps[epId] = true;
+                }
+                e.target.textContent = "Unmark All";
+            }
+            saveState();
+
+            document.querySelectorAll(".episode-watched-button")
+                .forEach(btn => {
+                    if (allWatched) {
+                        btn.classList.remove("active");
+                    } else {
+                        btn.classList.add("active");
+                    }
+                });
+
+            updateSeasonPercent();
+            updateShowPercent();
+            updateOverallPercent();
         }
     });
 

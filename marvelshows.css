@@ -133,7 +133,7 @@ nav ul li a {
 
 .card-back .desc {
     font-size: 14px;
-    max-height: 80px;
+    max-height: 150px;
     overflow-y: auto;
 }
 
@@ -152,12 +152,6 @@ nav ul li a {
     color: #6B9AC4;
     border-radius: 6px;
     cursor: pointer;
-}
-
-.rewatch-count {
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
 }
 
 .modal-overlay {
@@ -330,6 +324,17 @@ nav ul li a {
 .episode-watched-button.active {
     background-color: #6B9AC4;
     color: #fff;
+}
+
+.mark-all-watched {
+    margin-top: 15px;
+    padding: 8px 14px;
+    background-color: #fff;
+    color: #466f8f;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
