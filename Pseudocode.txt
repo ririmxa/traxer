@@ -83,37 +83,32 @@ END FUNCTION
 
 #LocalStorage Algorithms
 
-FUNCTION saveProgress(watchedMovies, watchedEpisodes, rewatches)
-    data = {
-        movies: watchedMovies,
-        episodes: watchedEpisodes,
-        rewatches: rewatches
-    }
+FUNCTION saveProgress(movieState, showState)
+    movieJSON = CONVERT movieState TO JSON
+    showJSON = CONVERT showState TO JSON
 
-    jsonString = CONVERT data to jsonString
-
-    STORE jsonString IN LocalStorage UNDER "progress"
+    STORE movieJSON IN LocalStorage UNDER "movieState"
+    STORE showJSON IN LocalStorage UNDER "showState"
 END FUNCTION
+
 
 FUNCTION loadProgress()
-    saved = READ "progress" FROM LocalStorage
+    movieJSON = READ "movieState" FROM LocalStorage
+    showJSON = READ "showState" FROM LocalStorage
 
-    IF saved IS NULL THEN
-        RETURN {
-            movies: EMPTY LIST,
-            episodes: EMPTY OBJECT
-            rewatches: EMPTY OBJECT
-        }
-    TRY
-        data = PARSE saved
-        RETURN data
-    CATCH error
-        RETURN {
-            movies: EMPTY LIST,
-            episodes: EMPTY OBJECT
-            rewatches: EMPTY OBJECT    
-        }
+    IF movieJSON IS NULL THEN
+        movieState = EMPTY OBJECT
+    ELSE
+        movieState = PARSE movieJSON
+
+    IF showJSON IS NULL THEN
+        showState = EMPTY OBJECT
+    ELSE
+        showState = PARSE showJSON
+
+    RETURN { movieState, showState }
 END FUNCTION
+
 
 #Episode Expansion Algorithm
 
